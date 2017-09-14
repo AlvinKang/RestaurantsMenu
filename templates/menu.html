@@ -5,11 +5,11 @@
 </head>
 <body>
 	<h1>{{restaurant.name}}</h1>
-	<p><a href="#">Create New Item</a></p>
-
 	{% if not items %}
 		<p>There is no menu yet.</p>
 	{% endif %}
+
+	<p><a href="#">Create New Item</a></p>
 
 	{% if appetizers %}
 	<h2>Appetizers</h2>
