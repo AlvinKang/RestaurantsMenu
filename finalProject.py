@@ -47,7 +47,7 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 @app.route('/restaurant/<int:restaurant_id>/')
 def showMenu(restaurant_id):
-	return "This page is the menu for restaurant {}".format(restaurant_id)
+	return render_template('menu.html', restaurant=restaurant, items=items)
 
 # Create a new menu item
 # /restaurant/<int:restaurant_id>/menu/new
@@ -59,7 +59,6 @@ def newMenuItem(restaurant_id):
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit/')
 def editMenuItem(restaurant_id, menu_id):
-
 	return "This page is for editing menu item {}".format(menu_id)
 
 # Delete a menu item
