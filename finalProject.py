@@ -5,7 +5,7 @@ app = Flask(__name__)
 # /restaurants
 # /
 @app.route('/')
-@app.route('/restaurants/')
+@app.route('/restaurant/')
 def showRestaurants():
 	return "This page will show all my restaurants"
 
