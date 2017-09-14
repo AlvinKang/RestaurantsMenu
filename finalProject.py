@@ -56,7 +56,8 @@ def showMenu(restaurant_id):
 # /restaurant/<int:restaurant_id>/menu/new
 @app.route('/restaurant/<int:restaurant_id>/menu/new/')
 def newMenuItem(restaurant_id):
-	return "This page is for making a new menu item for restaurant {}".format(restaurant_id)
+	return render_template('newMenuItem.html', restaurant=restaurant)
+	# return "This page is for making a new menu item for restaurant {}".format(restaurant_id)
 
 # Edit a menu item
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit
