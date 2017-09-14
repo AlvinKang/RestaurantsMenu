@@ -6,9 +6,19 @@
 <body>
 	<h1>New Menu Item</h1>
 	<form action="#" method="post">
-		<p>Menu Item Name:</p>
-		<input type="text" name="name" size="30">
-		<input type="submit" name="NewMenu">
+		<p>Name:</p>
+			<input type="text" name="menuName" size="30">
+		<p>Description:</p>
+			<input type="text" name="menuDescription" size="30">
+		<p>Price:</p>
+			<input type="text" name="menuPrice" size="30">
+		<p>Course:</p>
+			<input type="radio" name="course" value="appetizer"> Appetizer<br>
+		  <input type="radio" name="course" value="entree"> Entree<br>
+		  <input type="radio" name="course" value="dessert"> Dessert<br>
+		  <input type="radio" name="course" value="beverage"> Beverage<br>
+
+		<input type="submit" name="NewMenu" value="Create"><br>
 		<a href="#">Cancel</a>
 	</form>
 </body>
