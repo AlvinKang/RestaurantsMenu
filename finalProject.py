@@ -33,28 +33,24 @@ item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$
 def showRestaurants():
 	restaurants = session.query(Restaurant)
 	return render_template('restaurants.html', restaurants=restaurants)
-	# return "This page will show all my restaurants"
 
 # Create a new restaurant
 # /restaurant/new
 @app.route('/restaurant/new/')
 def newRestaurant():
 	return render_template('newRestaurant.html')
-	# return "This page will be for making a new restaurant"
 
 # Edit a restaurant
 # /restaurant/<int:restaurant_id>/edit
 @app.route('/restaurant/<int:restaurant_id>/edit/')
 def editRestaurant(restaurant_id):
 	return render_template('editRestaurant.html', restaurant=restaurant)
-	# return "This page will be for editing restaurant {}".format(restaurant_id)
 
 # Delete a restaurant
 # /restaurant/<int:restaurant_id>/delete
 @app.route('/restaurant/<int:restaurant_id>/delete/')
 def deleteRestaurant(restaurant_id):
 	return render_template('deleteRestaurant.html', restaurant=restaurant)
-	# return "This page will be for deleting restaurant {}".format(restaurant_id)
 
 #########################################
 
@@ -84,21 +80,18 @@ def showMenu(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/menu/new/')
 def newMenuItem(restaurant_id):
 	return render_template('newMenuItem.html', restaurant=restaurant)
-	# return "This page is for making a new menu item for restaurant {}".format(restaurant_id)
 
 # Edit a menu item
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit/')
 def editMenuItem(restaurant_id, menu_id):
 	return render_template('editMenuItem.html', restaurant=restaurant, item=item)
-	# return "This page is for editing menu item {}".format(menu_id)
 
 # Delete a menu item
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete/')
 def deleteMenuItem(restaurant_id, menu_id):
 	return render_template('deleteMenuItem.html', restaurant=restaurant, item=item)
-	# return "This page is for editing menu item {}".format(menu_id)
 
 if __name__ == '__main__':
 	app.debug = True
