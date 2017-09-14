@@ -5,10 +5,58 @@
 </head>
 <body>
 	<h1>{{restaurant.name}}</h1>
-	{% for i in items %}
-		<p>{{i.name}}</p>
-		<p>{{i.price}}</p>
-		<p>{{i.description}}</p>
-	{% endfor %}
+	<p><a href="#">Create New Item</a></p>
+
+	{% if not items %}
+		<p>There is no menu yet.</p>
+	{% endif %}
+
+	{% if appetizers %}
+	<h2>Appetizers</h2>
+		{% for i in appetizers %}
+			<p>{{i.name}}
+			<br>{{i.price}}
+			<br>{{i.description}}
+			<br><a href="#">Edit</a>
+			<br><a href="#">Delete</a>
+			</p>
+		{% endfor %}
+	{% endif %}
+
+	{% if entrees %}
+	<h2>Entrees</h2>
+		{% for i in entrees %}
+			<p>{{i.name}}
+			<br>{{i.price}}
+			<br>{{i.description}}
+			<br><a href="#">Edit</a>
+			<br><a href="#">Delete</a>
+			</p>
+		{% endfor %}
+	{% endif %}
+
+	{% if desserts %}
+	<h2>Desserts</h2>
+		{% for i in desserts %}
+			<p>{{i.name}}
+			<br>{{i.price}}
+			<br>{{i.description}}
+			<br><a href="#">Edit</a>
+			<br><a href="#">Delete</a>
+			</p>
+		{% endfor %}
+	{% endif %}
+
+	{% if beverages %}
+	<h2>Beverages</h2>
+		{% for i in beverages %}
+			<p>{{i.name}}
+			<br>{{i.price}}
+			<br>{{i.description}}
+			<br><a href="#">Edit</a>
+			<br><a href="#">Delete</a>
+			</p>
+		{% endfor %}
+	{% endif %}
 </body>
 </html>

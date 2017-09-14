@@ -10,6 +10,8 @@ restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', '
 items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
 item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
 
+## course: Appetizer, Entree, Dessert, Beverage
+
 #########################################
 
 # Show all restaurants
@@ -50,7 +52,20 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 @app.route('/restaurant/<int:restaurant_id>/')
 def showMenu(restaurant_id):
-	return render_template('menu.html', restaurant=restaurant, items=items)
+	appetizers = []
+	entrees = []
+	desserts = []
+	beverages = []
+	for item in items:
+		if item['course'] == 'Appetizer':
+			appetizers.append(item)
+		elif item['course'] == 'Entree':
+			entrees.append(item)
+		elif item['course'] == 'Dessert':
+			desserts.append(item)
+		else:
+			beverages.append(item)
+	return render_template('menu.html', items=items, restaurant=restaurant, appetizers=appetizers, entrees=entrees, desserts=desserts, beverages=beverages)
 
 # Create a new menu item
 # /restaurant/<int:restaurant_id>/menu/new
