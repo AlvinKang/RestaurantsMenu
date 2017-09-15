@@ -26,7 +26,7 @@ item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$
 #########################################
 
 # Show all restaurants
-# /restaurants
+# /restaurant
 # /
 @app.route('/')
 @app.route('/restaurant/')
@@ -48,9 +48,17 @@ def newRestaurant():
 
 # Edit a restaurant
 # /restaurant/<int:restaurant_id>/edit
-@app.route('/restaurant/<int:restaurant_id>/edit/')
+@app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
 def editRestaurant(restaurant_id):
-	return render_template('editRestaurant.html', restaurant=restaurant)
+	editedRestaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+	if request.method == 'POST':
+		if request.form['name']:
+			editedRestaurant.name = request.form['name']
+		session.add(editedRestaurant)
+		session.commit()
+		return redirect(url_for('showRestaurants'))
+	else:
+		return render_template('editRestaurant.html', restaurant=editedRestaurant)
 
 # Delete a restaurant
 # /restaurant/<int:restaurant_id>/delete
