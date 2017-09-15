@@ -80,19 +80,24 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurant/<int:restaurant_id>/menu/')
 @app.route('/restaurant/<int:restaurant_id>/')
 def showMenu(restaurant_id):
+	restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+	items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
+
+	# Organize menu items into different courses
 	appetizers = []
 	entrees = []
 	desserts = []
 	beverages = []
 	for item in items:
-		if item['course'] == 'Appetizer':
+		if item.course == 'Appetizer':
 			appetizers.append(item)
-		elif item['course'] == 'Entree':
+		elif item.course == 'Entree':
 			entrees.append(item)
-		elif item['course'] == 'Dessert':
+		elif item.course == 'Dessert':
 			desserts.append(item)
 		else:
 			beverages.append(item)
+
 	return render_template('menu.html', items=items, restaurant=restaurant, appetizers=appetizers, entrees=entrees, desserts=desserts, beverages=beverages)
 
 # Create a new menu item
