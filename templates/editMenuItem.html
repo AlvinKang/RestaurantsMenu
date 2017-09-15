@@ -5,11 +5,20 @@
 </head>
 <body>
 	<h1>Edit Menu Item</h1>
-	<form action="#" method="post">
-		<p>Menu Item Name:</p>
-		<input type="text" name="name" size="30" placeholder="{{item.name}}">
-		<input type="submit" name="EditMenu">
-		<a href="#">Cancel</a>
-	</form>
+	<form action="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_id=item.id) }}" method="post">
+			<label for="menuName">Name:</label><br>
+				<input type="text" name="menuName" rows="5" cols="40" placeholder="{{ item.name }}" required><br>
+			<label for="menuDescription">Description:</label><br>
+				<textarea type="text" name="menuDescription" rows="10" cols="60" placeholder="{{ item.description }}" required></textarea><br>
+			<label for="menuPrice">Price:</label><br>
+				<input type="text" name="menuPrice" size="8" placeholder="{{ item.price }}" required><br>
+			<label for="course">Course:</label><br>
+				<input type="radio" name="course" value="appetizer" checked="checked"> Appetizer<br>
+			  <input type="radio" name="course" value="entree"> Entree<br>
+			  <input type="radio" name="course" value="dessert"> Dessert<br>
+			  <input type="radio" name="course" value="beverage"> Beverage<br>
+			<input type="submit" name="EditMenu" value="Edit"><br>
+			<a href="{{ url_for('showMenu', restaurant_id=restaurant.id) }}">Cancel</a>
+		</form>
 </body>
 </html>
