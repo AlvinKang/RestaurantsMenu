@@ -6,6 +6,6 @@
 <body>
 	<h1>Are you sure you want to delete {{ item.name }}?</h1>
 	<input type="submit" name="DeleteMenu" value="Delete Menu Item">
-	<a href="#">Cancel</a>
+	<a href="{{ url_for('showMenu', restaurant_id=restaurant.id) }}">Cancel</a>
 </body>
 </html>
