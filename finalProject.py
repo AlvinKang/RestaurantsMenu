@@ -115,7 +115,7 @@ def newMenuItem(restaurant_id):
 
 # Edit a menu item
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit
-@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit/')
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit/', methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
 	restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
 	editedItem = session.query(MenuItem).filter_by(id=menu_id).one()
@@ -132,7 +132,7 @@ def editMenuItem(restaurant_id, menu_id):
 
 # Delete a menu item
 # /restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete
-@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete/')
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete/', methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
 	restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
 	deletedItem = session.query(MenuItem).filter_by(id=menu_id).one()
