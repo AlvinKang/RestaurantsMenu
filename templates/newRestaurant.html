@@ -5,11 +5,11 @@
 </head>
 <body>
 	<h1>New Restaurant</h1>
-	<form action="#" method="post">
+	<form action="{{ url_for('newRestaurant') }}" method="post">
 			<p>Restaurant Name:</p>
 			<input type="text" name="name" size="30">
 			<input type="submit" name="NewRestaurant">
-			<a href="#">Cancel</a>
+			<a href={{ url_for('showRestaurants') }}>Cancel</a>
 		</form>
 </body>
 </html>
