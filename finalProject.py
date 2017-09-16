@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
@@ -60,6 +60,12 @@ def deleteRestaurant(restaurant_id):
 		return redirect(url_for('showRestaurants'))
 	else:
 		return render_template('deleteRestaurant.html', restaurant=deletedRestaurant)
+
+# JSON endpoint for restaurants
+@app.route('/restaurant/JSON')
+def restaurantsJSON():
+	restaurants = session.query(Restaurant)
+	return jsonify(Restaurants=[r.serialize for r in restaurants])
 
 #########################################
 
