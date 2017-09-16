@@ -62,7 +62,7 @@ def deleteRestaurant(restaurant_id):
 		return render_template('deleteRestaurant.html', restaurant=deletedRestaurant)
 
 # JSON endpoint for restaurants
-@app.route('/restaurant/JSON')
+@app.route('/restaurant/JSON/')
 def restaurantsJSON():
 	restaurants = session.query(Restaurant)
 	return jsonify(Restaurants=[r.serialize for r in restaurants])
@@ -137,6 +137,13 @@ def deleteMenuItem(restaurant_id, menu_id):
 		return redirect('showMenu', restaurant_id=restaurant_id)
 	else:
 		return render_template('deleteMenuItem.html', restaurant=restaurant, item=deletedItem)
+
+# JSON endpoint for restaurant menu
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON/')
+@app.route('/restaurant/<int:restaurant_id>/JSON/')
+def restaurantMenuJSON(restaurant_id):
+	menuItems = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
+	return jsonify(MenuItems=[i.serialize for i in menuItems])
 
 if __name__ == '__main__':
 	app.debug = True
